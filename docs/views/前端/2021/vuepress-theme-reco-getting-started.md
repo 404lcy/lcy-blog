@@ -1,7 +1,6 @@
 ---
 title: Vuepress-theme-reco 新手指北之 Hello烤鸭
 date: 2021-08-21
-sidebar: auto
 tags:
   - vuepress
   - vuepress-theme-reco
