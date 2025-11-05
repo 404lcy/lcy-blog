@@ -2,29 +2,29 @@
 title: Vue-cli3中的前端单元测试之环境搭建
 date: 2020-07-18
 sidebar: auto
-tags: 
- - 单元测试
+tags:
+  - 单元测试
 categories:
- - 前端
+  - 前端
 ---
 
 > 本文中所用到的测试工具如下  
 > kmci: karma + mocha + chai + istanbul  
-> 此文只涉及在vue-cli3中如何集成以上工具，不再详细介绍各个工具
+> 此文只涉及在 vue-cli3 中如何集成以上工具，不再详细介绍各个工具
 
 <!-- more -->
 
 ## mocha + chai
 
-首先创建vue-cli3的项目
+首先创建 vue-cli3 的项目
 
 ```
 vue create unit-test
 ```
 
-在预设环境中选择unit-test 随后选择mocha + chai
+在预设环境中选择 unit-test 随后选择 mocha + chai
 
-之后项目就自带了vue-cli帮我们集成的mocha和chai
+之后项目就自带了 vue-cli 帮我们集成的 mocha 和 chai
 
 ## karma
 
@@ -34,9 +34,9 @@ vue create unit-test
 npm install --save-dev karma karma-chrome-launcher karma-mocha karma-sourcemap-loader karma-spec-reporter karma-webpack
 ```
 
-### 2.配置karma
+### 2.配置 karma
 
-在项目的根目录执行karma的初始化方法，生成`karma.conf.js`
+在项目的根目录执行 karma 的初始化方法，生成`karma.conf.js`
 
 ```
 karma init
@@ -74,7 +74,7 @@ Press tab to list possible options.
 > yes
 ```
 
-更改生成的karma配置文件
+更改生成的 karma 配置文件
 
 添加了**webpack**相关的配置，增加了**测试文件**和**需要预编辑的文件**的匹配条件式。
 
@@ -142,11 +142,11 @@ module.exports = function (config) {
 
 ### 3.编写测试用例
 
-理论上应为每个Vue组件分别写一个单元测试文件。测试文件名应该为“**[组件名].spec.js**”，比如组件名为`HelloWorld.vue`，那么对应的测试文件名为`HelloWorld.spec.js`
+理论上应为每个 Vue 组件分别写一个单元测试文件。测试文件名应该为“**[组件名].spec.js**”，比如组件名为`HelloWorld.vue`，那么对应的测试文件名为`HelloWorld.spec.js`
 
 ### 4.运行测试用例
 
-在`package.json`中添加一条script。
+在`package.json`中添加一条 script。
 
 ```
 "test": "karma start"
@@ -158,7 +158,7 @@ module.exports = function (config) {
 npm run test
 ```
 
-[参考文章](https://blog.csdn.net/dikentoujing99/article/details/86686348): 若遇到webpack的编译报错请参考原文解决方案
+[参考文章](https://blog.csdn.net/dikentoujing99/article/details/86686348): 若遇到 webpack 的编译报错请参考原文解决方案
 
 ## istanbul
 
@@ -168,29 +168,25 @@ npm run test
 npm install --save-dev babel-plugin-istanbul istanbul-instrumenter-loader nyc
 ```
 
-### 2.配置babel
+### 2.配置 babel
 
 babel.config.js
 
 ```js
 module.exports = {
-  presets: [
-    '@vue/app'
-  ],
-  plugins: [
-    'babel-plugin-istanbul'
-  ]
+  presets: ['@vue/app'],
+  plugins: ['babel-plugin-istanbul']
 }
 ```
 
-### 3.配置webpack
+### 3.配置 webpack
 
 vue.config.js
 
 ```js
 const path = require('path')
 module.exports = {
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.devtool('eval')
     config.module
       .rule('istanbul')
@@ -206,9 +202,9 @@ module.exports = {
 }
 ```
 
-### 4.配置nyc
+### 4.配置 nyc
 
-nyc是istanbul的命令行工具
+nyc 是 istanbul 的命令行工具
 
 package.json
 
@@ -247,28 +243,28 @@ package.json
 - add `coverage` and `.nyc_output` to your `.gitignore`.
 - npm install --save-dev nodemon（用于监听）
 
-[参考issue](https://github.com/vuejs/vue-cli/issues/1363)：遇到的一些问题的解决方案也都来源于issue
+[参考 issue](https://github.com/vuejs/vue-cli/issues/1363)：遇到的一些问题的解决方案也都来源于 issue
 
 ## Vue Test Utils
 
-直接安装即可使用 `npm install --save-dev @vue/test-utils `
+直接安装即可使用 `npm install --save-dev @vue/test-utils`
 
 ## 相关链接
 
 [练习项目](https://github.com/smallsunnyfox/frontend-unit-test)
 
-[Istanbul官网](https://istanbul.js.org/)
+[Istanbul 官网](https://istanbul.js.org/)
 
-[Mocha中文文档](https://segmentfault.com/a/1190000011362879#articleHeader4)
+[Mocha 中文文档](https://segmentfault.com/a/1190000011362879#articleHeader4)
 
 [Chai BDD 风格中文文档](https://www.jianshu.com/p/f200a75a15d2)
 
 [Chai TDD 风格断言库](https://www.chaijs.com/api/assert/)
 
-[Karma官网](http://karma-runner.github.io/latest/index.html)
+[Karma 官网](http://karma-runner.github.io/latest/index.html)
 
-[element-ui的单元测试](https://github.com/ElemeFE/element/tree/dev/test/unit)
+[element-ui 的单元测试](https://github.com/ElemeFE/element/tree/dev/test/unit)
 
-[Vue组件的单元测试](https://cn.vuejs.org/v2/cookbook/unit-testing-vue-components.html)
+[Vue 组件的单元测试](https://cn.vuejs.org/v2/cookbook/unit-testing-vue-components.html)
 
 [Testing Vue.js Applications](https://cn.vuejs.org/v2/cookbook/unit-testing-vue-components.html)

@@ -1,9 +1,9 @@
 ---
 title: VueTestUtils笔记
 tags:
- - 单元测试
+  - 单元测试
 categories:
- - 笔记
+  - 笔记
 date: 2019-07-01
 ---
 
@@ -19,15 +19,15 @@ date: 2019-07-01
 
 [组件](https://vue-test-utils.vuejs.org/zh/api/components/)
 
-## 起步demo
+## 起步 demo
 
 挂载 ==> 测试 ==> 模拟交互
 
 ```javascript
 /* eslint-disable no-unused-expressions */
-import { mount } from '@vue/test-utils'// 从测试实用工具集中导入 `mount()` 方法
-import Counter from '@/components/counter.vue'// 导入要测试的组件
-import { expect } from 'chai'// 导入要使用的断言集
+import { mount } from '@vue/test-utils' // 从测试实用工具集中导入 `mount()` 方法
+import Counter from '@/components/counter.vue' // 导入要测试的组件
+import { expect } from 'chai' // 导入要使用的断言集
 
 describe.only('Counter', () => {
   // 现在挂载组件，你便得到了这个包裹器
@@ -43,14 +43,14 @@ describe.only('Counter', () => {
   // 模拟用户交互
   it('button click should increment the count', () => {
     expect(wrapper.vm.count).toBe(0)
-    const button = wrapper.find('button')// 定位按钮
-    button.trigger('click')// 模拟点击
+    const button = wrapper.find('button') // 定位按钮
+    button.trigger('click') // 模拟点击
     expect(wrapper.vm.count).toBe(1)
   })
 })
 ```
 
-## 关于nextTick()
+## 关于 nextTick()
 
 > 为了简化用法，Vue Test Utils 同步应用了所有的更新，所以你不需要在测试中使用 Vue.nextTick > 来等待 DOM 更新。
 >
@@ -65,7 +65,7 @@ describe.only('Counter', () => {
 
 ```javascript
 // 这不会被捕获
-it('will time out', done => {
+it('will time out', (done) => {
   Vue.nextTick(() => {
     expect(true).toBe(false)
     done()
@@ -73,7 +73,7 @@ it('will time out', done => {
 })
 
 // 接下来的两项测试都会如预期工作
-it('will catch the error using done', done => {
+it('will catch the error using done', (done) => {
   Vue.config.errorHandler = done
   Vue.nextTick(() => {
     expect(true).toBe(false)
@@ -92,7 +92,7 @@ it('will catch the error using a promise', () => {
 
 ### 测试什么
 
-> 对于UI组件的测试不要一味地追求行覆盖率，因为它会导致我们过分关注组件的内部实现细节，从而导致琐碎的测试。
+> 对于 UI 组件的测试不要一味地追求行覆盖率，因为它会导致我们过分关注组件的内部实现细节，从而导致琐碎的测试。
 
 取而代之的是，我们推荐把测试撰写为断言你的组件的公共接口，并在一个黑盒内部处理它。一个简单的测试用例将会断言一些输入 (用户的交互或 prop 的改变) 提供给某组件之后是否导致预期结果 (渲染结果或触发自定义事件)。
 
@@ -208,7 +208,7 @@ const wrapper = mount(MyComponent)
 wrapper.find('button').trigger('click')
 ```
 
-###  选项
+### 选项
 
 `trigger` 方法接受一个可选的 `options` 对象。这个 `options` 对象里的属性会被添加到事件中。
 
@@ -242,13 +242,13 @@ wrapper.find('button').trigger('click')
 
 ```javascript
 wrapper.trigger('keydown', {
-    key: 'a'
+  key: 'a'
 })
 ```
 
-## 配合Vue Router 使用
+## 配合 Vue Router 使用
 
-### 在测试中安装Vue Router
+### 在测试中安装 Vue Router
 
 在测试中，你应该杜绝在基本的 Vue 构造函数中安装 Vue Router。安装 Vue Router 之后 Vue 的原型上会增加 `$route` 和 `$router` 这两个只读属性。
 
@@ -280,7 +280,7 @@ shallowMount(Component, {
 
   ```javascript
   import { shallowMount } from '@vue/test-utils'
-  
+
   shallowMount(Component, {
     stubs: ['router-link', 'router-view']
   })
@@ -291,10 +291,10 @@ shallowMount(Component, {
   ```javascript
   import { shallowMount, createLocalVue } from '@vue/test-utils'
   import VueRouter from 'vue-router'
-  
+
   const localVue = createLocalVue()
   localVue.use(VueRouter)
-  
+
   shallowMount(Component, {
     localVue
   })
@@ -326,9 +326,9 @@ wrapper.vm.$route.path // /some/path
 >
 > 要想回避这个问题，就不要在运行测试的时候全局安装 Vue Router，而用上述的 `localVue` 用法。
 
-## 在组件中测试Vuex
+## 在组件中测试 Vuex
 
-### 伪造Action
+### 伪造 Action
 
 站在测试的角度，我们不关心这个 action 做了什么或者这个 store 是什么样子的。我们只需要知道这些 action 将会在适当的时机触发，以及它们触发时的预期值。
 
@@ -336,15 +336,15 @@ wrapper.vm.$route.path // /some/path
 
 我们可以把 store 传递给一个 [`localVue`](https://vue-test-utils.vuejs.org/zh/api/options.html#localvue)，而不是传递给基础的 Vue 构造函数。`localVue` 是一个独立作用域的 Vue 构造函数，我们可以对其进行改动而不会影响到全局的 Vue 构造函数。
 
-### 伪造Getter
+### 伪造 Getter
 
 我们并不关注这些 getter 返回什么——只关注它们被正确的渲染。
 
-### 伪造Module
+### 伪造 Module
 
 [Module](https://vuex.vuejs.org/zh/guide/modules.html) 对于将我们的 store 分隔成多个可管理的块来说非常有用。它们也暴露 getter。我们可以在测试中使用它们。
 
-### 测试一个Vuex Store
+### 测试一个 Vuex Store
 
 这里有两个测试 Vuex store 的方式。第一个方式是分别单元化测试 getter、mutation 和 action。第二个方式是创建一个 store 并针对其进行测试。两种方式的比较如下。
 

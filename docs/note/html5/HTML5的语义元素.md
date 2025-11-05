@@ -2,9 +2,9 @@
 title: HTML5语义元素
 date: 2019-09-12
 tags:
- - Html5
+  - Html5
 categories:
- - 笔记
+  - 笔记
 ---
 
 ## 一、什么是语义元素
@@ -13,17 +13,17 @@ categories:
 - 语义元素 = 元素的意义
 - 一个语义元素能够清楚地描述其意义给浏览器和开发者
 
-##  二、语义化优点：
+## 二、语义化优点
 
-- 为了在没有css时，也可以很好地呈现出内容结构，代码结构。
+- 为了在没有 css 时，也可以很好地呈现出内容结构，代码结构。
 - 易于用户阅读，样式丢失的时候能让页面呈现清晰的结构。
-- 有利于SEO，搜索引擎根据标签来确定上下文和各个关键字的权重。
+- 有利于 SEO，搜索引擎根据标签来确定上下文和各个关键字的权重。
 - 方便其他设备解析，如盲人阅读器根据语义渲染网页
-- 有利于开发和维护，语义化更具可读性，代码更好维护，与CSS3关系更和谐。
+- 有利于开发和维护，语义化更具可读性，代码更好维护，与 CSS3 关系更和谐。
 
-## 三、html5新的语义元素
+## 三、html5 新的语义元素
 
-``` html
+```html
 <article>规定独立的自包含内容</article>
 <aside>侧栏</aside>
 <details>定义用户能够查看或隐藏的额外细节</details>
@@ -37,7 +37,9 @@ categories:
 <summary>定义details元素的可见标题</summary>
 <time>定义日期/时间</time>
 ```
+
 ## 四、其他语义元素
+
 ```html
 <title>标题</title>
 <mark>呈现黄色突出显示，定义重要的或强调的文本</mark>
@@ -56,7 +58,7 @@ categories:
 <meter>定义已知范围或分数值内的标量测量。(IE不支持meter)<meter>
 <progress max="100" value="50">
   定义运行中的进度(进程)
-  兼容ie: <span>76</span>% 
+  兼容ie: <span>76</span>%
 </progess>
 <details>
   <summary>前端</summary>
@@ -76,33 +78,43 @@ categories:
 ## 五、语义元素的浏览器兼容
 
 ### 设置样式为块级元素
+
 ```css
- header, section, footer, aside, nav, article, figure
- { 
- 	display: block; 
- } 
+header,
+section,
+footer,
+aside,
+nav,
+article,
+figure {
+  display: block;
+}
 ```
-### 对ie浏览器的兼容
+
+### 对 ie 浏览器的兼容
+
 - 第一种解决方案
+
 ```html
 <style type="text/css">
-	nav {
-		height: 200px;
-		background-color: red;
-		/* 将元素转化为块级元素 */
-		display: block;
-	}
+  nav {
+    height: 200px;
+    background-color: red;
+    /* 将元素转化为块级元素 */
+    display: block;
+  }
 </style>
 
 <script type="text/javascript">
-	//第一种解决方案
-	document.createElement("nav");
+  //第一种解决方案
+  document.createElement('nav')
 </script>
 ```
+
 - 第二种解决方案
-引入js插件，本质上与第一种解决方案相同
+  引入 js 插件，本质上与第一种解决方案相同
 - 第三种解决方案
-对浏览器版本进行判断，在需要的时候引入js插件
+  对浏览器版本进行判断，在需要的时候引入 js 插件
 
 ```html
 //谷歌静态资源库
@@ -116,16 +128,17 @@ categories:
 ```
 
 ## 六、注意事项
-1.尽可能少的使用无语义的标签div和span；
 
-2.在语义不明显时，既可以使用div或者p时，尽量用p, 因为p在默认情况下有上下间距，对兼容特殊终端有利；
+1.尽可能少的使用无语义的标签 div 和 span；
 
-3.不要使用纯样式标签，如：b、font、u等，改用css设置。
+2.在语义不明显时，既可以使用 div 或者 p 时，尽量用 p, 因为 p 在默认情况下有上下间距，对兼容特殊终端有利；
 
-4.需要强调的文本，可以包含在strong或者em标签中（浏览器预设样式，能用CSS指定就不用他们），strong默认样式是加粗（不要用b），em是斜体（不用i）；
+3.不要使用纯样式标签，如：b、font、u 等，改用 css 设置。
 
-5.使用表格时，标题要用caption，表头用thead，主体部分用tbody包围，尾部用tfoot包围。表头和一般单元格要区分开，表头用th，单元格用td；
+4.需要强调的文本，可以包含在 strong 或者 em 标签中（浏览器预设样式，能用 CSS 指定就不用他们），strong 默认样式是加粗（不要用 b），em 是斜体（不用 i）；
 
-6.表单域要用fieldset标签包起来，并用legend标签说明表单的用途；
+5.使用表格时，标题要用 caption，表头用 thead，主体部分用 tbody 包围，尾部用 tfoot 包围。表头和一般单元格要区分开，表头用 th，单元格用 td；
 
-7.每个input标签对应的说明文本都需要使用label标签，并且通过为input设置id属性，在lable标签中设置for=someld来让说明文本和相对应的input关联起来。
+6.表单域要用 fieldset 标签包起来，并用 legend 标签说明表单的用途；
+
+7.每个 input 标签对应的说明文本都需要使用 label 标签，并且通过为 input 设置 id 属性，在 lable 标签中设置 for=someld 来让说明文本和相对应的 input 关联起来。

@@ -3,13 +3,14 @@ title: HTML5表单元素
 date: 2019-09-11
 sidebarDepth: 2
 tags:
- - Html5
+  - Html5
 categories:
- - 笔记
+  - 笔记
 ---
+
 ## 新的表单元素
 
-### 新的Input类型
+### 新的 Input 类型
 
 <br>
 <form>
@@ -35,13 +36,13 @@ categories:
 
 <br>
 <form action="#" method="get">
-		<input type="text" name="uname" pattern="^\d{4,11}" required class="uname">
-		<input type="submit" name=""><br><br>
+  <input type="text" name="uname" pattern="^\d{4,11}" required class="uname">
+  <input type="submit" name=""><br><br>
     正确格式为4到11位数字，请输入错误格式以测试
 </form>
 <script>
   var input = document.querySelector(".uname");
-  input.oninvalid=function(){   	
+  input.oninvalid=function(){
     if(this.validity.patternMismatch===true){
       this.setCustomValidity("请输入4到11位数字");
     }else{
@@ -52,24 +53,26 @@ categories:
 
 1. 表单验证触发`oninvalid`事件
 2. 通过`setCustomValidity`方法设置修改内容
+
 ```html
 <form action="#" method="get">
-		<input type="text" name="uname" pattern="^\d{4,11}" required class="uname">
-		<input type="submit" name="">
+  <input type="text" name="uname" pattern="^\d{4,11}" required class="uname" />
+  <input type="submit" name="" />
 </form>
 <script>
-  var input = document.querySelector(".uname");
-  input.oninvalid=function(){   	
-    if(this.validity.patternMismatch===true){
-      this.setCustomValidity("请输入4到11位数字");
-    }else{
-      this.setCustomValidity("");
+  var input = document.querySelector('.uname')
+  input.oninvalid = function() {
+    if (this.validity.patternMismatch === true) {
+      this.setCustomValidity('请输入4到11位数字')
+    } else {
+      this.setCustomValidity('')
     }
   }
 </script>
 ```
 
-### datalist元素
+### datalist 元素
+
 input 元素使用 datalist 预定义值
 
 <input list="browsers">
@@ -82,7 +85,7 @@ input 元素使用 datalist 预定义值
 </datalist>
 
 ```html
-<input list="browsers">
+<input list="browsers" />
 <datalist id="browsers">
   <option value="Internet Explorer"></option>
   <option value="Firefox"></option>
@@ -91,7 +94,8 @@ input 元素使用 datalist 预定义值
   <option value="Safari"></option>
 </datalist>
 ```
-### output元素
+
+### output 元素
 
 <br>
 <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
@@ -101,13 +105,14 @@ input 元素使用 datalist 预定义值
 </form>
 
 ```html
-<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
-    <input type="range" id="a" value="50">100 +
-    <input type="number" id="b" value="50">=
-    <output name="x" for="a b"></output>
+<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+  0 <input type="range" id="a" value="50" />100 +
+  <input type="number" id="b" value="50" />=
+  <output name="x" for="a b"></output>
 </form>
 ```
-### keygen元素
+
+### keygen 元素
 
 `<keygen>`元素的作用是提供一种验证用户的可靠方法。
 
@@ -120,45 +125,47 @@ input 元素使用 datalist 预定义值
 ## 表单新属性
 
 ### form
-- autocomplete = on | off          自动完成
-- novalidate = true | false        是否关闭校验
- 
+
+- autocomplete = on | off 自动完成
+- novalidate = true | false 是否关闭校验
+
 ### input
+
 - autofocus : 自动获取焦点
 - required : 规定必须在提交之前填写输入域（不能为空）
 - placeholder
   - 占位符
-  - 适用于以下类型的input标签: text, search, url, telephone, email 以及 password。
+  - 适用于以下类型的 input 标签: text, search, url, telephone, email 以及 password。
 - multiple
   - 规定是否可选择多个值
-  - 适用于以下类型的input标签: email 和 file。
-- autocomplete : 
+  - 适用于以下类型的 input 标签: email 和 file。
+- autocomplete :
   - 规定输入字段是否应该启用自动完成功能
-  - 适用于以下类型的input标签: text, search, url, telephone, email, password, datepickers, range 以及 color。
+  - 适用于以下类型的 input 标签: text, search, url, telephone, email, password, datepickers, range 以及 color。
 - form : 规定输入域所属的一个或多个(用空格分隔)表单
-- formaction : 
-  - 用于描述表单提交的URL地址
+- formaction :
+  - 用于描述表单提交的 URL 地址
   - 与 `type="submit"` 和 `type="image"` 配合使用
   - 会覆盖`<form>`元素中的 `action` 属性
-- formenctype : 
+- formenctype :
   - 属性描述了表单提交到服务器的数据编码
   - 与 `type="submit"` 和 `type="image"` 配合使用
   - 会覆盖 `form` 元素的 `enctype` 属性
-- formmethod : 
+- formmethod :
   - 定义了表单提交的方式
   - 覆盖了 `<form>` 元素的的 `method` 属性
   - 与 `type="submit"` 和 `type="image"` 配合使用
-- formnovalidate : 
+- formnovalidate :
   - 描述了 `<input>` 元素在表单提交时无需被验证
   - 会覆盖 `<form>` 元素的`novalidate`属性
-  - 与`type="submit"`一起使用  
-- formtarget : 
+  - 与`type="submit"`一起使用
+- formtarget :
   - 指定一个名称或一个关键字来指明表单提交数据接收后的展示
   - 覆盖 `<form>` 元素的 `target` 属性
   - 与 `type="submit"` 和 `type="image"` 配合使用
 - pattern (regexp)
   - 描述了一个正则表达式用于验证 `<input>` 元素的值
-  - 适用于以下类型的input标签: text, search, url, tel, email, 以及 password
+  - 适用于以下类型的 input 标签: text, search, url, tel, email, 以及 password
 - list
   - 规定输入域的 datalist
   - 值为 datalist 的 id
@@ -166,7 +173,7 @@ input 元素使用 datalist 预定义值
   - 规定用于 `image` 类型的 `<input>` 标签的图像高度和宽度。
   - 与 `type="image"` 配合使用
 - min 、max
-  - 适用于以下类型的input标签: datepickers、number 以及 range。
+  - 适用于以下类型的 input 标签: datepickers、number 以及 range。
 - step
   - 为输入域规定合法的数字间隔
-  - 适用于以下类型的input标签: number, range, date, datetime, datetime-local, month, time 以及 week。
+  - 适用于以下类型的 input 标签: number, range, date, datetime, datetime-local, month, time 以及 week。

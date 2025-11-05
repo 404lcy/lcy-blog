@@ -3,33 +3,34 @@ title: CSS3新特性
 date: 2019-09-08
 sidebarDepth: 2
 tags:
- - css3
+  - css3
 categories:
- - 笔记
+  - 笔记
 ---
 
 ## 背景
 
-CSS3更新了几个新的背景属性用来控制背景元素
+CSS3 更新了几个新的背景属性用来控制背景元素
 
 - `background-origin`: 规定背景图片的定位区域，可选值如下
-  - `padding-box`  背景图像相对内边距定位（默认值）
-  - `border-box`   背景图像相对边框定位【以边框左上角为参照进行位置设置】
-  - `content-box`  背景图像相对内容区域定位【以内容区域左上角为参照进行位置设置】
+
+  - `padding-box` 背景图像相对内边距定位（默认值）
+  - `border-box` 背景图像相对边框定位【以边框左上角为参照进行位置设置】
+  - `content-box` 背景图像相对内容区域定位【以内容区域左上角为参照进行位置设置】
   - 默认值为`padding-box`
 
 - `background-clip`: 规定背景的绘制区域，可选值如下
-  - `border-box`	 背景被裁切到边框盒子位置 【将背景图片在整个容器中显示】
-  - `padding-box`	 背景被裁切到内边距区域【将背景图片在内边距区域（包含内容区域）显示】
-  - `content-box`	 背景被裁切到内容区域【将背景图片在内容区域显示】
+
+  - `border-box` 背景被裁切到边框盒子位置 【将背景图片在整个容器中显示】
+  - `padding-box` 背景被裁切到内边距区域【将背景图片在内边距区域（包含内容区域）显示】
+  - `content-box` 背景被裁切到内容区域【将背景图片在内容区域显示】
   - 默认值为`border-box`
 
 - `background-size`: 规定背景图片的尺寸，可选值如下
-  - `length`       设置背景图片高度和宽度
-  - `percentage`   将计算相对于背景定位区域的百分比
-  - `cover`        会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小
-  - `contain`      会保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小。
-
+  - `length` 设置背景图片高度和宽度
+  - `percentage` 将计算相对于背景定位区域的百分比
+  - `cover` 会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小
+  - `contain` 会保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小。
 
 ## 边框
 
@@ -39,6 +40,7 @@ CSS3更新了几个新的背景属性用来控制背景元素
   - `border-bottom-right-radius` 右下
   - `border-bottom-left-radius` 左下
 - 盒子阴影 `box-shadow: h-shadow v-shadow blur spread color inset`;
+
   - `h-shadow`: 必需的。代表阴影在水平方向的偏移量（正数向右，负数向左）
   - `v-shadow`: 必需的。代表阴影在垂直方向的偏移量（正数代表向下，负数代表向上）
   - `blur`: 可选。模糊距离（不能设置负数）
@@ -52,16 +54,16 @@ CSS3更新了几个新的背景属性用来控制背景元素
   - `border-image-width: number|%|auto`: 边框图片宽度
   - `border-image-outset: length|number`: 指定在边框外部绘制 `border-image-area` 的量
     - length
-    - number代表相应的border-width 的倍数
+    - number 代表相应的 border-width 的倍数
   - `border-image-repeat`: 设置边框图片的平铺方式
-    - stretch默认值。拉伸图像来填充区域
-    - repeat平铺图像来填充区域
-    - round如果无法完整平铺所有图像，则对图像进行缩放以适应区域
-    - space如果无法完整平铺所有图像，扩展空间会分布在图像周围
+    - stretch 默认值。拉伸图像来填充区域
+    - repeat 平铺图像来填充区域
+    - round 如果无法完整平铺所有图像，则对图像进行缩放以适应区域
+    - space 如果无法完整平铺所有图像，扩展空间会分布在图像周围
 
 ## 文本效果
 
-- 文本阴影 `text-shadow: h-shadow v-shadow blur color;` 
+- 文本阴影 `text-shadow: h-shadow v-shadow blur color;`
   - `h-shadow`: 必需的。代表阴影在水平方向的偏移量（正数向右，负数向左）
   - `v-shadow`: 必需的。代表阴影在垂直方向的偏移量（正数代表向下，负数代表向上）
   - `blur`: 可选。模糊距离（不能设置负数）
@@ -81,30 +83,35 @@ CSS3更新了几个新的背景属性用来控制背景元素
 ## 渐变
 
 ### 线性渐变
+
 `background: linear-gradient(direction, color-stop1, color-stop2, ...);`
+
 1. 开始颜色和结束颜色
-   - 取值可以为关键字、十六进制颜色值、RGBA颜色等
-2. 渐变的方向 
+   - 取值可以为关键字、十六进制颜色值、RGBA 颜色等
+2. 渐变的方向
    - `to + right | top | bottom | left`
    - 通过角度表示一个方向 0deg(从下向上) 90deg(从左到右)
 3. 渐变的范围
-   - 可以使用长度单位来控制渐变的开始位置与结束位置，在颜色后面用空格隔开加长度，长度单位可以是px也可以是%等
+   - 可以使用长度单位来控制渐变的开始位置与结束位置，在颜色后面用空格隔开加长度，长度单位可以是 px 也可以是%等
 4. 重复的线性渐变
    - `repeating-linear-gradient()` 函数用于重复线性渐变
    - `repeating-linear-gradient(red, yellow 10%, green 20%);`
+
 ### 径向渐变
+
 `background: radial-gradient(position , shape size, start-color, ..., last-color);`
-1. 颜色  
-   - 颜色可以为关键词、十六进制颜色值、RGBA颜色值等
+
+1. 颜色
+   - 颜色可以为关键词、十六进制颜色值、RGBA 颜色值等
 2. 圆心位置 `postion`
    - `position` 可以为长度值或者关键字
    - 若提供两个参数则第一个参数表示横坐标，第二个参数表示纵坐标
-   - 若只提供一个，第二个值默认为50%，即center
+   - 若只提供一个，第二个值默认为 50%，即 center
 3. 圆形状 `shape`
    - `circle` 定义径向渐变为圆形
    - `ellipse` 定义径向渐变为椭圆形
 4. 圆大小 `size`  
-主要用于定于径向渐变的结束形状大小
+   主要用于定于径向渐变的结束形状大小
    - `closest-side`: 指定径向渐变的半径长度为从圆心到离圆心最近的边
    - `closest-corner`: 指定径向渐变的半径长度为从圆心到离圆心最近的角
    - `farthest-side`: 指定径向渐变的半径长度为从圆心到离圆心最远的边
@@ -112,7 +119,7 @@ CSS3更新了几个新的背景属性用来控制背景元素
 5. 重复的径向渐变
    - `repeating-radial-gradient` 函数用于重复径向渐变
 
-## 2D转换
+## 2D 转换
 
 - 位移
   - `transform: translate(100px, 100px);`
@@ -122,27 +129,28 @@ CSS3更新了几个新的背景属性用来控制背景元素
   - 取值为角度
 - 缩放
   - `transform: scale(0.5, 1);`
-  - 取值为倍数关系，缩小大于0小于1，放大设置大于1
+  - 取值为倍数关系，缩小大于 0 小于 1，放大设置大于 1
 - 倾斜
   - `transform: skew(30deg, 30deg);`
-  - 第一个值代表沿着x轴方向倾斜
-  - 第二个值代表沿着y轴方向倾斜
-  - `skewX()` 表示只在X轴(水平方向)倾斜
-  - `skewY()` 表示只在Y轴(垂直方向)倾斜
+  - 第一个值代表沿着 x 轴方向倾斜
+  - 第二个值代表沿着 y 轴方向倾斜
+  - `skewX()` 表示只在 X 轴(水平方向)倾斜
+  - `skewY()` 表示只在 Y 轴(垂直方向)倾斜
 - `martix()`
   - matrix 包含旋转，缩放，移动（平移）和倾斜功能
-  - martix 使用六个值的矩阵来定义2D转换
-## 3D转换
+  - martix 使用六个值的矩阵来定义 2D 转换
+
+## 3D 转换
 
 - 位移
-  - `transform: translateX()  translateY()   translateZ();`
+  - `transform: translateX() translateY() translateZ();`
 - 旋转
-  - `transform: rotateX(60deg)  rotateY(60deg)  rotateZ(60deg);`
+  - `transform: rotateX(60deg) rotateY(60deg) rotateZ(60deg);`
 - 缩放
-  - `transform: scaleX(0.5)  scaleY(1)  scaleZ(1);`
+  - `transform: scaleX(0.5) scaleY(1) scaleZ(1);`
 - 更改转换元素的位置
-  - 2D转换元素可以改变元素的X和Y轴
-  - 3D转换元素，还可以更改元素的Z轴
+  - 2D 转换元素可以改变元素的 X 和 Y 轴
+  - 3D 转换元素，还可以更改元素的 Z 轴
   - `transform-origin: x-axis y-axis z-axis;`
     - `x-axis: left|center|right|length|%`
     - `y-axis: top|center|bottom|length|%`
@@ -168,14 +176,16 @@ CSS3更新了几个新的背景属性用来控制背景元素
     - `visible`: 默认值。 背面是可见的。
     - `hidden`: 背面是不可见的。
 - `matrix3d()`
-  - matrix3d 使用16个值的矩阵来定义3D转换
+  - matrix3d 使用 16 个值的矩阵来定义 3D 转换
 
 ## 过渡
+
 CSS3 过渡是元素从一种样式逐渐改变为另一种的效果  
 `transition: property duration timing-function delay;`
+
 - 过渡属性
   - `transition-property: none|all|property;`
-  - `transition-property` 属性指定CSS属性的过渡效果
+  - `transition-property` 属性指定 CSS 属性的过渡效果
 - 过渡执行时间
   - `transition-duration: time;`
   - `transition-duration` 属性规定完成过渡效果需要花费的时间（以秒或毫秒计）
@@ -189,22 +199,26 @@ CSS3 过渡是元素从一种样式逐渐改变为另一种的效果
 ## 动画
 
 ### 定义动画集
-- 动画是使元素从一种样式逐渐变化为另一种样式的效果。  
+
+- 动画是使元素从一种样式逐渐变化为另一种样式的效果。
 - 动画可以改变任意多的样式任意多的次数。
 - 动画使用用百分比来规定变化发生的时间，或用关键词 "from" 和 "to"，等同于 0% 和 100%
+
   ```css
-  @keyframes  rotate {
-  	/* 定义开始状态  0%*/
-  	0% {
-  		transform: translateX(0px);
-  	}
-		/* 定义结束状态 100%*/
-		100% {
-			transform: translateX(200px);
-		}
-	}
+  @keyframes rotate {
+    /* 定义开始状态  0%*/
+    0% {
+      transform: translateX(0px);
+    }
+    /* 定义结束状态 100%*/
+    100% {
+      transform: translateX(200px);
+    }
+  }
   ```
+
 ### 调用动画集
+
 动画属性的简写属性  
 `animation: name duration timing-function delay iteration-count direction fill-mode play-state;`
 
@@ -249,33 +263,45 @@ CSS3 过渡是元素从一种样式逐渐改变为另一种的效果
 ## 多媒体查询
 
 ### 媒体查询的定义
+
 - 使用 @media 查询，你可以针对不同的媒体类型定义不同的样式。
 - 使用 @media 可以针对不同的屏幕尺寸设置不同的样式，用于设计响应式的页面
 - 重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面。
 
 ### 媒体查询的使用
+
 - 直接使用
+
   ```css
   @media mediatype and|not|only (media feature) {
       CSS-Code;
   }
   ```
-- 针对不同的媒体使用不同的样式表
-  ```html
-  <link rel="stylesheet" media="mediatype and|not|only (media feature)" href="mystylesheet.css">
-  ```
-- [css3媒体类型和媒体功能](https://www.w3cschool.cn/cssref/css3-pr-mediaquery.html)
-- [css媒体类型](https://www.w3cschool.cn/css/css-mediatypes.html)
 
-## Flex布局
+- 针对不同的媒体使用不同的样式表
+
+  ```html
+  <link
+    rel="stylesheet"
+    media="mediatype and|not|only (media feature)"
+    href="mystylesheet.css"
+  />
+  ```
+
+- [css3 媒体类型和媒体功能](https://www.w3cschool.cn/cssref/css3-pr-mediaquery.html)
+- [css 媒体类型](https://www.w3cschool.cn/css/css-mediatypes.html)
+
+## Flex 布局
 
 ### 定义
+
 - `Flex` 是 `Flexible Box` 的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。
 - 任何一个容器都可以指定为 Flex 布局。`display: flex`
 - 行内元素也可以使用 Flex 布局。`display: inline-flex`
 - 设为 Flex 布局以后，子元素的`float`、`clear`和`vertical-align`属性将失效。
 
 ### 基本概念
+
 - 采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。
 - 它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
 - 容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。
@@ -317,7 +343,7 @@ CSS3 过渡是元素从一种样式逐渐改变为另一种的效果
     - flex-end：交叉轴的终点对齐。
     - center：交叉轴的中点对齐。
     - baseline: 项目的第一行文字的基线对齐。
-    - stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+    - stretch（默认值）：如果项目未设置高度或设为 auto，将占满整个容器的高度。
 - `align-content`
   - `align-content` 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
   - `align-content: flex-start | flex-end | center | space-between | space-around | stretch`
@@ -331,18 +357,18 @@ CSS3 过渡是元素从一种样式逐渐改变为另一种的效果
 ### 项目的属性
 
 - `order`
-  - `order` 属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
+  - `order` 属性定义项目的排列顺序。数值越小，排列越靠前，默认为 0。
 - `flex-grow`
-  - `flex-grow` 属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
-  - 如果所有项目的`flex-grow`属性都为1，则它们将等分剩余空间（如果有的话）。
-  - 如果一个项目的`flex-grow`属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+  - `flex-grow` 属性定义项目的放大比例，默认为 0，即如果存在剩余空间，也不放大。
+  - 如果所有项目的`flex-grow`属性都为 1，则它们将等分剩余空间（如果有的话）。
+  - 如果一个项目的`flex-grow`属性为 2，其他项目都为 1，则前者占据的剩余空间将比其他项多一倍。
 - `flex-shrink`
-  - `flex-shrink` 属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
-  - 如果所有项目的`flex-shrink`属性都为1，当空间不足时，都将等比例缩小。
-  - 如果一个项目的`flex-shrink`属性为0，其他项目都为1，则空间不足时，前者不缩小。
+  - `flex-shrink` 属性定义了项目的缩小比例，默认为 1，即如果空间不足，该项目将缩小。
+  - 如果所有项目的`flex-shrink`属性都为 1，当空间不足时，都将等比例缩小。
+  - 如果一个项目的`flex-shrink`属性为 0，其他项目都为 1，则空间不足时，前者不缩小。
   - 负值对该属性无效
 - `flex-basis`
-  - `flex-basis` 属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+  - `flex-basis` 属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为 auto，即项目的本来大小。
   - `flex-basis: number|%|auto;`
 - `flex`
   - `flex`属性是`flex-grow`, `flex-shrink` 和 `flex-basis`的简写，默认值为`0 1 auto`。

@@ -2,10 +2,10 @@
 title: Vue组件
 date: 2020-03-31
 tags:
- - js
- - Vue
+  - js
+  - Vue
 categories:
- - 笔记
+  - 笔记
 ---
 
 ## 组件注册
@@ -27,10 +27,12 @@ Vue.component('my-component-name', {
 ### 局部注册
 
 1. 定义组件
-2. 在components选项中引入组件
+2. 在 components 选项中引入组件
 
 ```javascript
-var ComponentA = { /* ... */ }
+var ComponentA = {
+  /* ... */
+}
 new Vue({
   el: '#app',
   components: {
@@ -72,7 +74,7 @@ const requireComponent = require.context(
   /Base[A-Z]\w+\.(vue|js)$/
 )
 
-requireComponent.keys().forEach(fileName => {
+requireComponent.keys().forEach((fileName) => {
   // 获取组件配置
   const componentConfig = requireComponent(fileName)
 
@@ -100,8 +102,9 @@ requireComponent.keys().forEach(fileName => {
 
 ## Prop
 
-- Prop的大小写: 使用DOM中的模板时`camelCase`的 prop 名需要使用其等价的`kebab-case`命名
-- Prop的类型: props属性可以是字符串数组，也可以以对象的形式来指定prop的类型
+- Prop 的大小写: 使用 DOM 中的模板时`camelCase`的 prop 名需要使用其等价的`kebab-case`命名
+- Prop 的类型: props 属性可以是字符串数组，也可以以对象的形式来指定 prop 的类型
+
   ```javascript
   // 字符串数组
   props: ['title', 'likes', 'isPublished', 'commentIds', 'author']
@@ -116,9 +119,11 @@ requireComponent.keys().forEach(fileName => {
     contactsPromise: Promise // or any other constructor
   }
   ```
-- 单向数据流: 父组件更新时子组件中的prop也会随之更新, 但在子组件中无法直接更新prop的值
-- Prop验证: `props`属性可以接受一个带有验证需求的对象  
-  type支持`String、Number、Boolean、Array、Object、Date、Function、Symbol`
+
+- 单向数据流: 父组件更新时子组件中的 prop 也会随之更新, 但在子组件中无法直接更新 prop 的值
+- Prop 验证: `props`属性可以接受一个带有验证需求的对象  
+  type 支持`String、Number、Boolean、Array、Object、Date、Function、Symbol`
+
   ```javascript
   props: {
     // 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)
@@ -152,17 +157,19 @@ requireComponent.keys().forEach(fileName => {
     }
   }
   ```
+
   ::: tip  
   prop 会在一个组件实例创建之前进行验证，所以实例的属性 (如 data、computed 等) 在 default 或 validator 函数中是不可用的。  
   :::
 
-## 非Prop的Attribute
+## 非 Prop 的 Attribute
 
 - 介绍：一个非 `prop` 的 `attribute` 是指传向一个组件，但是该组件并没有相应 prop 定义的 attribute。
 - 替换：对于绝大多数 attribute 来说，从外部提供给组件的值会替换掉组件内部设置好的值。
 - 合并：对于 `class` 和 `style` 来说，外部的值会和组件内部的值合并
 - 禁用：在组件的选项中设置 `inheritAttrs: false`来禁止组件的根元素继承 attribute
-  配合实例的 $attrs 属性使用, 可以手动决定这些 attribute 会被赋予哪个元素
+  配合实例的 \$attrs 属性使用, 可以手动决定这些 attribute 会被赋予哪个元素
+
   ```javascript
   Vue.component('base-input', {
     inheritAttrs: false,

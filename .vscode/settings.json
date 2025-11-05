@@ -1,0 +1,13 @@
+{
+  "markdown.validate.enabled": true,
+  "markdown.links.validate": true,
+  "files.associations": {
+    "*.md": "markdown"
+  },
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.markdownlint": true
+    }
+  }
+}
