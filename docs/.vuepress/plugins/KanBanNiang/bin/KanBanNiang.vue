@@ -9,14 +9,38 @@
         :style="btnStyle"
         class="operation"
         @mouseenter="isShowMessageBox = true"
-        @mouseleave="isShowMessageBox = false">
-        <i class="kbnfont kbn-ban-home ban-home" @click="goHome" @mouseenter="hoverGoHome" @mouseleave="resetMessage"></i>
+        @mouseleave="isShowMessageBox = false"
+      >
+        <i
+          class="kbnfont kbn-ban-home ban-home"
+          @click="goHome"
+          @mouseenter="hoverGoHome"
+          @mouseleave="resetMessage"
+        ></i>
         <i class="kbnfont kbn-ban-message message"></i>
-        <i class="kbnfont kbn-ban-close close" @click="closeBanNiang" @mouseenter="hoverCloseBanNiang" @mouseleave="resetMessage"></i>
-        <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html">
-          <i class="kbnfont kbn-ban-info info" @mouseenter="hoverMoreInfo" @mouseleave="resetMessage" ></i>
+        <i
+          class="kbnfont kbn-ban-close close"
+          @click="closeBanNiang"
+          @mouseenter="hoverCloseBanNiang"
+          @mouseleave="resetMessage"
+        ></i>
+        <a
+          target="_blank"
+          href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html"
+        >
+          <i
+            class="kbnfont kbn-ban-info info"
+            @mouseenter="hoverMoreInfo"
+            @mouseleave="resetMessage"
+          ></i>
         </a>
-        <i v-show="myTheme.length > 1" class="kbnfont kbn-ban-theme skin" @click="changeTheme" @mouseenter="hoverChangeTheme" @mouseleave="resetMessage"></i>
+        <i
+          v-show="myTheme.length > 1"
+          class="kbnfont kbn-ban-theme skin"
+          @click="changeTheme"
+          @mouseenter="hoverChangeTheme"
+          @mouseleave="resetMessage"
+        ></i>
       </div>
       <canvas
         id="banniang"
@@ -36,7 +60,7 @@
 import live2dJSString from './assets/js/live2d'
 export default {
   name: 'KanBanNiang',
-  data () {
+  data() {
     return {
       isLoaded: true,
       displayBanNiang: false,
@@ -51,33 +75,43 @@ export default {
       },
       currentTheme: THEME[0],
       myTheme: THEME,
-      themeName: ['blackCat', 'whiteCat', 'haru1', 'haru2', 'haruto', 'koharu', 'izumi', 'shizuku', 'wanko', 'miku', 'z16'],
+      themeName: [
+        'blackCat',
+        'whiteCat',
+        'haru1',
+        'haru2',
+        'haruto',
+        'koharu',
+        'izumi',
+        'shizuku',
+        'wanko',
+        'miku',
+        'z16'
+      ],
       // 模型地址
       model: {
         blackCat:
-          // 'https://assets.smallsunnyfox.com/models/live2d-widget-model-hijiki/assets/hijiki.model.json',
-          // 'https://assets.smallsunnyfox.com/models/model/HyperdimensionNeptunia/histoire/index.json',
-          'https://assets.smallsunnyfox.com/models/model/liang/2.json',
+          'https://cdn.jsdelivr.net/npm/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json',
         whiteCat:
-          'https://assets.smallsunnyfox.com/models/live2d-widget-model-tororo/assets/tororo.model.json',
+          'https://cdn.jsdelivr.net/npm/live2d-widget-model-tororo@1.0.5/assets/tororo.model.json',
         haru1:
-          'https://assets.smallsunnyfox.com/models/live2d-widget-model-haru/01/assets/haru01.model.json',
+          'https://cdn.jsdelivr.net/npm/live2d-widget-model-haru@1.0.5/assets/haru01.model.json',
         haru2:
-          'https://assets.smallsunnyfox.com/models/live2d-widget-model-haru/02/assets/haru02.model.json',
+          'https://cdn.jsdelivr.net/npm/live2d-widget-model-haru@1.0.5/assets/haru02.model.json',
         haruto:
-          'https://assets.smallsunnyfox.com/models/live2d-widget-model-haruto/assets/haruto.model.json',
+          'https://cdn.jsdelivr.net/npm/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
         koharu:
-          'https://assets.smallsunnyfox.com/models/live2d-widget-model-koharu/assets/koharu.model.json',
+          'https://cdn.jsdelivr.net/npm/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json',
         izumi:
-          'https://assets.smallsunnyfox.com/models/live2d-widget-model-izumi/assets/izumi.model.json',
+          'https://cdn.jsdelivr.net/npm/live2d-widget-model-izumi@1.0.5/assets/izumi.model.json',
         shizuku:
-          'https://assets.smallsunnyfox.com/models/live2d-widget-model-shizuku/assets/shizuku.model.json',
+          'https://cdn.jsdelivr.net/npm/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json',
         wanko:
-          'https://assets.smallsunnyfox.com/models/live2d-widget-model-wanko/assets/wanko.model.json',
+          'https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json',
         miku:
-          'https://assets.smallsunnyfox.com/models/live2d-widget-model-miku/assets/miku.model.json',
+          'https://cdn.jsdelivr.net/npm/live2d-widget-model-miku@1.0.5/assets/miku.model.json',
         z16:
-          'https://assets.smallsunnyfox.com/models/live2d-widget-model-z16/assets/z16.model.json'
+          'https://cdn.jsdelivr.net/npm/live2d-widget-model-z16@1.0.5/assets/z16.model.json'
       },
       // model的高宽
       style: {
@@ -92,7 +126,7 @@ export default {
       btnStyle: BTN_STYLE
     }
   },
-  mounted () {
+  mounted() {
     this.btnStyle = {
       ...this.btnStyle,
       height: this.myTheme.length > 1 ? '120px' : '100px'
@@ -101,49 +135,53 @@ export default {
     this.initBanNiang()
   },
   methods: {
-    hoverGoHome () {
+    hoverGoHome() {
       this.messages.message = this.messages.home
     },
-    hoverChangeTheme () {
+    hoverChangeTheme() {
       this.messages.message = this.messages.theme
     },
-    hoverMoreInfo () {
+    hoverMoreInfo() {
       this.messages.message = '想知道关于我的更多信息吗？'
     },
-    hoverCloseBanNiang () {
+    hoverCloseBanNiang() {
       this.messages.message = this.messages.close
     },
-    resetMessage () {
+    resetMessage() {
       this.messages.message = this.messages.welocme
     },
-    goHome () {
+    goHome() {
       if (this.$route.path !== '/') {
         this.$router.push('/')
       }
     },
-    changeTheme () {
+    changeTheme() {
       const themes = []
       for (var i = 0; i < this.myTheme.length; i++) {
         if (this.myTheme[i] != this.currentTheme) {
           themes.push(this.myTheme[i])
         }
       }
-      const randomNum = Math.floor(Math.random() * (this.myTheme.length-1))
+      const randomNum = Math.floor(Math.random() * (this.myTheme.length - 1))
       this.currentTheme = themes[randomNum]
       this.initBanNiang()
     },
-    closeBanNiang () {
+    closeBanNiang() {
       this.isLoaded = false
       this.displayBanNiang = true
     },
-    showBanNiang () {
+    showBanNiang() {
       this.isLoaded = true
       this.displayBanNiang = false
       this.initBanNiang()
     },
-    initBanNiang () {
+    initBanNiang() {
       if (this.themeName.indexOf(this.currentTheme) === -1) {
-        console.log('@vuepress-reco/vuepress-plugin-kan-ban-niang不支持主题' + this.currentTheme + ', 请检查主题名, 或前往https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html 查看支持的主题')
+        console.log(
+          '@vuepress-reco/vuepress-plugin-kan-ban-niang不支持主题' +
+            this.currentTheme +
+            ', 请检查主题名, 或前往https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html 查看支持的主题'
+        )
         document.querySelector('.kanbanniang').style.display = 'none'
         return
       }
@@ -162,16 +200,13 @@ export default {
       var ajax = new XMLHttpRequest()
       ajax.open('get', this.model[this.currentTheme])
       ajax.send()
-      ajax.onreadystatechange = function () {
+      ajax.onreadystatechange = function() {
         if (ajax.status !== 200) {
-          console.log('看板娘的CDN资源加载失败了，请稍后刷新页面重试！')
+          console.log('CDN资源加载失败了，请稍后刷新页面重试！')
           document.querySelector('.kanbanniang').style.display = 'none'
         }
       }
-      window.loadlive2d(
-        'banniang',
-        this.model[this.currentTheme]
-      )
+      window.loadlive2d('banniang', this.model[this.currentTheme])
     }
   }
 }
